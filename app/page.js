@@ -20,19 +20,19 @@ export default function Home() {
     {
       name: "Anour Ibrahim",
       image:
-        "https://media.licdn.com/dms/image/v2/D4E35AQHnw56qGKYY9Q/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1723670040544?e=1724716800&v=beta&t=P9eSe4zj2P_xzL4LICWpkHTr_QsNQ3A1hnGxPstea_U",
+        "https://media.licdn.com/dms/image/v2/D4E03AQGUkNmhO2QS5Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1723670039082?e=1729728000&v=beta&t=0DhOZ_CIMrPh-yABoKnJMZNnp7i7-MXpeeaqaoA2GiQ",
       linkedin: "https://www.linkedin.com/in/anour-ibrahim-b11573234/",
     },
     {
       name: "Shafin Rehman",
       image:
-        "https://media.licdn.com/dms/image/D4E03AQHcfNzn17-X9Q/profile-displayphoto-shrink_400_400/0/1722036861629?e=1729123200&v=beta&t=OdpZh57VZRhdFSHv2nX6HzR9OoQpLAfmXSwcOS7-BUk",
+        "https://media.licdn.com/dms/image/v2/D4E03AQFDekch2jc2dg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724123528171?e=1729728000&v=beta&t=2fuv2TbUl26KpyKhWVT_E5gfqazBDRHcw3RQPyv8mfM",
       linkedin: "https://www.linkedin.com/in/shafin-rehman/",
     },
     {
       name: "Rabigh Ahmed",
       image:
-        "https://media.licdn.com/dms/image/v2/D4E03AQHYCwU7RpQilw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1723757522947?e=1729728000&v=beta&t=1qqyKY4TsilEQzi7pwBzpNvGGYr7chLb22ZyqVI--2s",
+        "https://media.licdn.com/dms/image/v2/D4E03AQGLxD0gUEh5xw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1724123628176?e=1729728000&v=beta&t=7mZix8CCIreICfJAHOe-8SrCeXK91xN27rYXyD8JKjo",
       linkedin: "https://www.linkedin.com/in/rabigh-ahmed-24a413263/",
     },
     {
