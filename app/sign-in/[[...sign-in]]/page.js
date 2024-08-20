@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import Head from "next/head";
+import { SignIn } from "@clerk/clerk-react";
 export default function SignUpPage() {
   return (
     <Container maxWidth="sm">
@@ -49,7 +50,7 @@ export default function SignUpPage() {
         }}
       >
         <Typography variant="h4">Sign In</Typography>
-        <SignedIn />
+        <SignIn />
       </Box>
     </Container>
   );
