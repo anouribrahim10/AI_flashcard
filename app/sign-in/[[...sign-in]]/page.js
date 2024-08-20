@@ -16,7 +16,7 @@ import Head from "next/head";
 import { SignIn } from "@clerk/clerk-react";
 export default function SignUpPage() {
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="100vw">
       <AppBar position="static" sx={{ backgroundColor: "#3f51b5" }}>
         <Toolbar>
           <Typography
