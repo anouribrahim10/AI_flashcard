@@ -32,7 +32,7 @@ export default function Home() {
     {
       name: "Rabigh Ahmed",
       image:
-        "https://media.licdn.com/dms/image/v2/D4E03AQGLxD0gUEh5xw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1724123628176?e=1729728000&v=beta&t=7mZix8CCIreICfJAHOe-8SrCeXK91xN27rYXyD8JKjo",
+        "https://media.licdn.com/dms/image/v2/D4E03AQFhTJRkgEolmw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1724123744309?e=1729728000&v=beta&t=ytV01QHw_iA36INQMasLqF5fVl2qCpcdIVPyHBTWrls",
       linkedin: "https://www.linkedin.com/in/rabigh-ahmed-24a413263/",
     },
     {
