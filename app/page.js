@@ -56,8 +56,8 @@ export default function Home() {
             Flashcard SaaS
           </Typography>
           <SignedOut>
-            <Button color="inherit">Login</Button>
-            <Button color="inherit">Sign up</Button>
+            {/*<Button color="inherit">Login</Button>
+            <Button color="inherit">Sign up</Button>*/}
           </SignedOut>
           <SignedIn>
             <UserButton />
@@ -80,56 +80,59 @@ export default function Home() {
         </Button>
       </Box>
 
-      <Box sx={{ my: 6 }}>
-        <Typography variant="h4" components="h2">
-          Features
-        </Typography>
-        <Grid contained spacing={4}>
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6">Easy Text Input</Typography>
-            <Typography>
-              Simply input your text and let out software do the rest. Creating
-              flashcards has never been easier.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6">Smart Flashcards</Typography>
-            <Typography>
-              Simply input your text and let out software do the rest. Creating
-              flashcards has never been easier.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6">Accesible Anywhere</Typography>
-            <Typography>
-              Simply input your text and let out software do the rest. Creating
-              flashcards has never been easier.
-            </Typography>
+      <Grid container spacing={4} sx={{ my: 6 }}>
+        <Grid item xs={12} md={6}>
+          <Typography variant="h4" component="h2">
+            Features
+          </Typography>
+          <Grid container spacing={4}>
+            <Grid item xs={12}>
+              <Typography variant="h6">Easy Text Input</Typography>
+              <Typography>
+                Simply input your text and let our software do the rest.
+                Creating flashcards has never been easier.
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h6">Smart Flashcards</Typography>
+              <Typography>
+                Simply input your text and let our software do the rest.
+                Creating flashcards has never been easier.
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h6">Accessible Anywhere</Typography>
+              <Typography>
+                Simply input your text and let our software do the rest.
+                Creating flashcards has never been easier.
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
-      </Box>
-      <Grid item xs={12} md={6}>
-        <Grid textAlign="center">
-          <Typography variant="h4" component="h2" gutterBottom>
-            The Developers
-          </Typography>
-          <Stack direction="row" spacing={4} mt={4} justifyContent="center">
-            {teamMembers.map((member, index) => (
-              <Link
-                href={member.linkedin}
-                key={index}
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{ textDecoration: "none" }}
-              >
-                <Avatar
-                  alt={member.name}
-                  src={member.image}
-                  sx={{ width: 80, height: 80, border: "2px solid #fff" }}
-                />
-              </Link>
-            ))}
-          </Stack>
+
+        <Grid item xs={12} md={6}>
+          <Box textAlign="center">
+            <Typography variant="h4" component="h2" gutterBottom>
+              The Developers
+            </Typography>
+            <Stack direction="row" spacing={4} mt={4} justifyContent="center">
+              {teamMembers.map((member, index) => (
+                <Link
+                  href={member.linkedin}
+                  key={index}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ textDecoration: "none" }}
+                >
+                  <Avatar
+                    alt={member.name}
+                    src={member.image}
+                    sx={{ width: 80, height: 80, border: "2px solid #fff" }}
+                  />
+                </Link>
+              ))}
+            </Stack>
+          </Box>
         </Grid>
       </Grid>
     </Container>
