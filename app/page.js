@@ -1,5 +1,6 @@
 import Image from "next/image";
 import getStripe from "@/utils/get-stripe";
+import logo from "./logo.png";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import {
   Box,
@@ -44,106 +45,138 @@ export default function Home() {
   ];
 
   return (
-    <Container maxWidth="100vw">
-      <Head>
-        <title>Flashcard SaaS</title>
-        <meta name="description" content="Create flashcards from your text" />
-      </Head>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        minWidth: "100vw",
+        margin: 0,
+        padding: 0,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundImage: "linear-gradient(15deg, #13547a 0%, #80d0c7 100%)",
+        //background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+        display: "flex",
+        flexDirection: "column",
+        overflowX: "hidden",
+      }}
+    >
+      <Container maxWidth="100vw">
+        <Head>
+          <title>FaithCards</title>
+          <meta name="description" content="Create flashcards from your text" />
+        </Head>
 
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
-            Flashcard SaaS
-          </Typography>
-          <SignedOut>
-            <Button color="inherit" href="/sign-in">
-              Login
-            </Button>
-            <Button color="inherit" href="/sign-up">
-              Sign up
-            </Button>
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </Toolbar>
-      </AppBar>
-      <Box
-        sx={{
-          textAlign: "center",
-          my: 4,
-        }}
-      >
-        <Typography variant="h2"> Welcome to Flashcard</Typography>
-        <Typography variant="h5">
-          {" "}
-          The easiest way to make flashcards from text
-        </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          href="/generate"
-          sx={{ mt: 2 }}
+        <AppBar position="static" sx={{ backgroundColor: "transparent", boxShadow: "none" }}>
+          <Toolbar>
+            <Typography variant="h6" style={{ flexGrow: 1, color: "#006466" }}>
+              FaithCards
+            </Typography>
+            <SignedOut>
+              <Button color="inherit" href="/sign-in" sx={{ color: "#006466" }}>
+                Login
+              </Button>
+              <Button color="inherit" href="/sign-up" sx={{ color: "#006466" }}>
+                Sign up
+              </Button>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </Toolbar>
+        </AppBar>
+
+        <Box
+          sx={{
+            textAlign: "center",
+            my: 4,
+          }}
         >
-          Get Started
-        </Button>
-      </Box>
-
-      <Grid container spacing={4} sx={{ my: 6 }}>
-        <Grid item xs={12} md={6}>
-          <Typography variant="h4" component="h2">
-            Features
+          <Image 
+            src={logo} 
+            alt="FaithCards Logo" 
+            width={300} 
+            height={150} 
+            style={{ margin: "0 auto" }} 
+          />
+          <Typography variant="h2" sx={{ color: "#144552" }}>
+            Let's Learn Islam Together
           </Typography>
-          <Grid container spacing={4}>
-            <Grid item xs={12}>
-              <Typography variant="h6">Easy Text Input</Typography>
-              <Typography>
-                Simply input your text and let our software do the rest.
-                Creating flashcards has never been easier.
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant="h6">Smart Flashcards</Typography>
-              <Typography>
-                Simply input your text and let our software do the rest.
-                Creating flashcards has never been easier.
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant="h6">Accessible Anywhere</Typography>
-              <Typography>
-                Simply input your text and let our software do the rest.
-                Creating flashcards has never been easier.
-              </Typography>
+          <Typography variant="h5" sx={{ color: "#e5e5e5" }}>
+            Explore and deepen your understanding of Islamic topics with ease.
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            href="/generate"
+            sx={{ mt: 2, color: "#e5e5e5" }}
+          >
+            Get Started
+          </Button>
+        </Box>
+
+        <Grid container spacing={4} sx={{ my: 6 }}>
+          <Grid item xs={12} md={6}>
+            <Typography variant="h4" component="h2" sx={{ color: "#e5e5e5" }}>
+              Features
+            </Typography>
+            <Grid container spacing={4}>
+              <Grid item xs={12}>
+                <Typography variant="h6" sx={{ color: "#99d98c" }}>
+                  Easy Topic Selection
+                </Typography>
+                <Typography sx={{ color: "#e5e5e5" }}>
+                  Simply input the Islamic topic you wish to learn about, and let
+                  our AI generate flashcards with questions for you to study.
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography variant="h6" sx={{ color: "#99d98c" }}>
+                  Smart Flashcards
+                </Typography>
+                <Typography sx={{ color: "#e5e5e5" }}>
+                  Our AI creates relevant and insightful questions based on your
+                  selected topic. Just click the flashcard to reveal the answer and
+                  enhance your knowledge.
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography variant="h6" sx={{ color: "#99d98c" }}>
+                  Accessible Anywhere
+                </Typography>
+                <Typography sx={{ color: "#e5e5e5" }}>
+                  Study Islamic topics on the go. Our platform is available
+                  wherever you have an internet connection.
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
 
-        <Grid item xs={12} md={6}>
-          <Box textAlign="center">
-            <Typography variant="h4" component="h2" gutterBottom>
-              The Developers
-            </Typography>
-            <Stack direction="row" spacing={4} mt={4} justifyContent="center">
-              {teamMembers.map((member, index) => (
-                <Link
-                  href={member.linkedin}
-                  key={index}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{ textDecoration: "none" }}
-                >
-                  <Avatar
-                    alt={member.name}
-                    src={member.image}
-                    sx={{ width: 80, height: 80, border: "2px solid #fff" }}
-                  />
-                </Link>
-              ))}
-            </Stack>
-          </Box>
+          <Grid item xs={12} md={6}>
+            <Box textAlign="center">
+              <Typography variant="h4" component="h2" gutterBottom sx={{ color: "#e5e5e5" }}>
+                The Developers
+              </Typography>
+              <Stack direction="row" spacing={4} mt={4} justifyContent="center">
+                {teamMembers.map((member, index) => (
+                  <Link
+                    href={member.linkedin}
+                    key={index}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ textDecoration: "none", color: "#e5e5e5" }}
+                  >
+                    <Avatar
+                      alt={member.name}
+                      src={member.image}
+                      sx={{ width: 80, height: 80, border: "2px solid #006466" }}
+                    />
+                  </Link>
+                ))}
+              </Stack>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </Box>
   );
 }

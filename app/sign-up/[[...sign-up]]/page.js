@@ -17,28 +17,24 @@ import { SignIn } from "@clerk/clerk-react";
 export default function SignUpPage() {
   return (
     <Container maxWidth="sm">
-      <AppBar position="static" sx={{ backgroundColor: "#3f51b5" }}>
-        <Toolbar>
-          <Typography
-            variant="h6"
-            sx={{
-              flexGrow: 1,
-            }}
-          >
-            Flashcard SaaS
-          </Typography>
-          <Button color="inherit">
-            <Link href="/login" passHref>
-              Login
-            </Link>
-          </Button>
-          <Button color="inherit">
-            <Link href="/signup" passHref>
-              Sign Up
-            </Link>
-          </Button>
-        </Toolbar>
-      </AppBar>
+      <AppBar position="static" sx={{ backgroundColor: "transparent", boxShadow: "none" }}>
+          <Toolbar>
+            <Typography variant="h6" style={{ flexGrow: 1, color: "#006466" }}>
+              FaithCards
+            </Typography>
+            <SignedOut>
+              <Button color="inherit" href="/sign-in" sx={{ color: "#006466" }}>
+                Login
+              </Button>
+              <Button color="inherit" href="/sign-up" sx={{ color: "#006466" }}>
+                Sign up
+              </Button>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </Toolbar>
+        </AppBar>
 
       <Box
         sx={{
