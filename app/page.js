@@ -80,7 +80,7 @@ export default function Home() {
           The easiest way to make flashcards from text
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mt: 2 }}>
-          <Button variant="contained" color="primary" href="/generate">
+          <Button variant="contained" color="secondary" href="/generate">
             Get Started
           </Button>
           <Button variant="contained" color="primary" href="/flashcards">
