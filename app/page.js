@@ -56,8 +56,12 @@ export default function Home() {
             Flashcard SaaS
           </Typography>
           <SignedOut>
-            <Button color="inherit" href = "/sign-in">Login</Button>
-            <Button color="inherit"href = "/sign-up">Sign up</Button>
+            <Button color="inherit" href="/sign-in">
+              Login
+            </Button>
+            <Button color="inherit" href="/sign-up">
+              Sign up
+            </Button>
           </SignedOut>
           <SignedIn>
             <UserButton />
@@ -75,7 +79,12 @@ export default function Home() {
           {" "}
           The easiest way to make flashcards from text
         </Typography>
-        <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+        <Button
+          variant="contained"
+          color="primary"
+          href="/generate"
+          sx={{ mt: 2 }}
+        >
           Get Started
         </Button>
       </Box>
