@@ -17,11 +17,21 @@ import {
   CardActionArea,
   DialogContentText,
 } from "@mui/material";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { styled } from "@mui/system";
+import { db } from "@/firebase.js"; // Named import
+
+import {
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+} from "firebase/firestore";
 
 export default function Generate() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -104,7 +114,25 @@ export default function Generate() {
           alignItems: "center",
         }}
       >
-        <Typography variant="h4">Generate Flashcards</Typography>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" style={{ flexGrow: 1 }}>
+              Flashcard SaaS
+            </Typography>
+            <SignedOut>
+              <Button color="inherit" href="/sign-in">
+                Login
+              </Button>
+              <Button color="inherit" href="/sign-up">
+                Sign up
+              </Button>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </Toolbar>
+        </AppBar>
+
         <Paper sx={{ p: 4, width: "100%" }}>
           <TextField
             value={text}

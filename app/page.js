@@ -79,14 +79,14 @@ export default function Home() {
           {" "}
           The easiest way to make flashcards from text
         </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          href="/generate"
-          sx={{ mt: 2 }}
-        >
-          Get Started
-        </Button>
+        <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mt: 2 }}>
+          <Button variant="contained" color="primary" href="/generate">
+            Get Started
+          </Button>
+          <Button variant="contained" color="primary" href="/flashcards">
+            Saved Flashcards
+          </Button>
+        </Box>
       </Box>
 
       <Grid container spacing={4} sx={{ my: 6 }}>
