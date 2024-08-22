@@ -151,7 +151,7 @@ export default function Home() {
             style={{ margin: "0 auto" }}
           />
           <Typography variant="h2" sx={{ color: "#144552" }}>
-            Let's Learn Islam Together
+            Learning Islam Made Easy
           </Typography>
           <Typography variant="h5" sx={{ color: "#e5e5e5" }}>
             Explore and deepen your understanding of Islamic topics with ease.
