@@ -1,4 +1,6 @@
 "use client";
+import Image from "next/image";
+
 import React, { useState } from "react";
 import {
   Container,
@@ -32,6 +34,8 @@ import {
   collection,
   writeBatch,
 } from "firebase/firestore";
+import logo2 from "./logo2.png";
+
 
 export default function Generate() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -102,22 +106,32 @@ export default function Generate() {
   };
 
   return (
-    <Container
-      sx={{
-        minHeight: "100vh",
-        minWidth: "100vw",
-        margin: 0,
-        padding: 0,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundImage: "linear-gradient(15deg, #13547a 0%, #80d0c7 100%)",
-        //background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-        display: "flex",
-        flexDirection: "column",
-        overflowX: "hidden",
-      }}
-    >
-      {/*<Box
+    <>
+      <style jsx global>{`
+        body, html {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+          width: 100%;
+        }
+      `}</style>
+      <Container
+        sx={{
+          minHeight: "100vh",
+          minWidth: "100vw",
+          margin: 0,
+          padding: 0,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundImage: "linear-gradient(to right, #f83600 0%, #f9d423 100%)",
+
+          display: "flex",
+          flexDirection: "column",
+          overflowX: "hidden",
+
+        }}
+      >
+        {/*<Box
         sx={{
           mt: 4,
           mb: 6,
@@ -169,50 +183,67 @@ export default function Generate() {
           </Button>
         </Paper>
       </Box>*/}
-      <Box
-        sx={{
-          minHeight: "100vh",
-          minWidth: "100vw",
-          margin: 0,
-          padding: 0,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundImage: "linear-gradient(15deg, #13547a 0%, #80d0c7 100%)",
-          //background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-          display: "flex",
-          flexDirection: "column",
-          overflowX: "hidden",
-        }}
-      >
-        <AppBar
-          position="static"
-          sx={{ backgroundColor: "transparent", boxShadow: "none" }}
+        <Box
+          sx={{
+            minHeight: "100vh",
+            minWidth: "100vw",
+            margin: 0,
+            padding: 0,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundImage: "linear-gradient(to right, #f83600 0%, #f9d423 100%)",
+
+            display: "flex",
+            flexDirection: "column",
+            overflowX: "hidden",
+          }}
         >
-          <Toolbar
+          <AppBar
+            position="static"
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
+              backgroundColor: "transparent",
+              boxShadow: "none",
+              padding: "12px 24px"  // Increase padding to make the AppBar larger
             }}
           >
-            <Link href="/" style={{ textDecoration: "none" }}>
-              <Typography variant="h6" style={{ color: "#006466" }}>
-                FaithCards
-              </Typography>
-            </Link>
-            <div style={{ display: "flex", gap: "1rem" }}>
+            <Toolbar sx={{ minHeight: 80 }}> {/* Increase the height of the Toolbar */}
+              <Box sx={{ flexGrow: 1 }}>
+                <Link href="/" passHref>
+                  <Image
+                    src={logo2}
+                    alt="FaithCards Logo"
+                    width={180}  // Increase the logo width
+                    height={60}  // Increase the logo height
+                    style={{ objectFit: "contain", cursor: "pointer" }}
+                  />
+                </Link>
+              </Box>
               <SignedOut>
                 <Button
                   color="inherit"
                   href="/sign-in"
-                  sx={{ color: "#006466" }}
+                  sx={{
+                    backgroundImage: "linear-gradient(-60deg, #ff5858 0%, #f09819 100%)",
+
+                    color: "black",
+                    fontWeight: "bold",
+                    mr: 2,
+                    fontSize: "1rem",  // Increase button text size
+                    padding: "10px 20px"  // Increase button padding
+                  }}
                 >
                   Login
                 </Button>
                 <Button
                   color="inherit"
                   href="/sign-up"
-                  sx={{ color: "#006466" }}
+                  sx={{
+                    backgroundImage: "linear-gradient(-60deg, #ff5858 0%, #f09819 100%)",
+                    color: "black",
+                    fontWeight: "bold",
+                    fontSize: "1rem",  // Increase button text size
+                    padding: "10px 20px"  // Increase button padding
+                  }}
                 >
                   Sign up
                 </Button>
@@ -220,10 +251,9 @@ export default function Generate() {
               <SignedIn>
                 <UserButton />
               </SignedIn>
-            </div>
-          </Toolbar>
-        </AppBar>
-        {/*<AppBar
+            </Toolbar>
+          </AppBar>
+          {/*<AppBar
           position="static"
           sx={{ backgroundColor: "transparent", boxShadow: "none" }}
         >
@@ -247,184 +277,238 @@ export default function Generate() {
           </Toolbar>
         </AppBar>*/}
 
-        <Container maxWidth="md" sx={{ margin: 0, padding: 0 }}>
-          <Box
-            sx={{
-              mt: 4,
-              mb: 6,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              color: "#e5e5e5", // Adjust text color for visibility
-            }}
-          >
-            <Typography variant="h4" sx={{ mb: 2 }}>
-              Generate Flashcards
-            </Typography>
-            <Paper sx={{ p: 4, width: "100%", backgroundColor: "#f2e8cf" }}>
-              <TextField
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                label="Enter text"
-                fullWidth
-                multiline
-                rows={4}
-                variant="outlined"
-                sx={{ mt: 2 }}
-                InputLabelProps={{
-                  style: { color: "#000000" },
-                }}
-                InputProps={{
-                  style: { color: "#000000" },
-                }}
-              ></TextField>
-              <Button
-                variant="contained"
-                onClick={handleSubmit}
-                color="primary"
-                fullWidth
-                sx={{ mt: 2, backgroundColor: "#006466" }}
-              >
-                Generate
-              </Button>
-            </Paper>
-          </Box>
+          <Container maxWidth="md" sx={{ margin: 0, padding: 0 }}>
+            <Box
+              sx={{
+                mt: 4,
+                mb: 6,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                color: "#e5e5e5", // Adjust text color for visibility
+              }}
+            >
+              <Typography variant="h4" sx={{ mb: 2, color: "#144552" }}>
+                Generate Flashcards
+              </Typography>
+              <Paper sx={{ p: 4, width: "100%", backgroundImage: "linear-gradient(-60deg, #ff5858 0%, #f09819 100%)", }}>
+                <TextField
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                  label="Enter text"
+                  fullWidth
+                  multiline
+                  rows={4}
+                  variant="outlined"
+                  sx={{
+                    mt: 2,
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        borderColor: '#144552', // Border color when the field is not focused
+                      },
+                      '&:hover fieldset': {
+                        borderColor: '#144552', // Border color when the field is hovered
+                      },
+                      '&.Mui-focused fieldset': {
+                        borderColor: '#144552', // Border color when the field is focused
+                      },
+                    },
+                    '& .MuiInputLabel-root': {
+                      color: '#000000', // Label color
+                    },
+                    '& .MuiInputBase-input': {
+                      color: '#000000', // Input text color
+                    },
+                  }}
+                />
 
-          {flashcards.length > 0 && (
-            <Box sx={{ mt: 4 }}>
-              <Typography variant="h5">Flashcards Preview</Typography>
-              <Grid container spacing={3}>
-                {flashcards.map((flashcard, index) => (
-                  <Grid item xs={12} sm={6} md={4} key={index}>
-                    <Card
-                      sx={{
-                        backgroundColor: "#f2e8cf", // Set flashcard background color
-                        padding: 0, // Remove padding from the Card
-                      }}
-                    >
-                      <CardActionArea onClick={() => handleCardClick(index)}>
-                        <CardContent
-                          sx={{
-                            textAlign: "center",
-                            padding: 0, // Remove padding from the CardContent
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              perspective: "1000px",
-                              "& > div": {
-                                transition: "transform 0.6s",
-                                transformStyle: "preserve-3d",
-                                position: "relative",
-                                width: "100%",
-                                height: "200px",
-                                boxShadow: "0 0 4px 3px rgba(0, 0, 0, 0.2)",
-                                transform: flipped[index]
-                                  ? "rotateY(180deg)"
-                                  : "rotateY(0deg)",
-                              },
-                              "& > div > div": {
-                                position: "absolute",
-                                width: "100%",
-                                height: "100%",
-                                backfaceVisibility: "hidden",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                boxSizing: "border-box",
-                                overflow: "hidden", // Ensure text doesn't overflow
-                                backgroundColor: "#f2e8cf", // Set flashcard sides background color
-                                padding: 0, // Remove padding from the inner div
-                              },
-                              "& > div > div:nth-of-type(2)": {
-                                transform: "rotateY(180deg)",
-                              },
-                            }}
-                          >
-                            <div>
-                              <div>
-                                <Typography
-                                  variant="h5"
-                                  component="div"
-                                  sx={{
-                                    whiteSpace: "normal",
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                    wordWrap: "break-word",
-                                    fontSize:
-                                      flashcard.front.length > 50
-                                        ? "1rem"
-                                        : "1.5rem", // Adjust font size based on text length
-                                    padding: 0, // Remove padding from Typography
-                                  }}
-                                >
-                                  {flashcard.front}
-                                </Typography>
-                              </div>
-                              <div>
-                                <Typography
-                                  variant="h5"
-                                  component="div"
-                                  sx={{
-                                    whiteSpace: "normal",
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                    wordWrap: "break-word",
-                                    fontSize:
-                                      flashcard.back.length > 50
-                                        ? "1rem"
-                                        : "1.5rem", // Adjust font size based on text length
-                                    padding: 0, // Remove padding from Typography
-                                  }}
-                                >
-                                  {flashcard.back}
-                                </Typography>
-                              </div>
-                            </div>
-                          </Box>
-                        </CardContent>
-                      </CardActionArea>
-                    </Card>
-                  </Grid>
-                ))}
-              </Grid>
-
-              <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
                 <Button
                   variant="contained"
-                  onClick={handleOpen}
-                  color="secondary"
+                  onClick={handleSubmit}
+                  color="primary"
+                  fullWidth
+                  sx={{ mt: 2, backgroundColor: "#144552" }}
                 >
-                  Save
+                  Generate
                 </Button>
-              </Box>
+              </Paper>
             </Box>
-          )}
 
-          <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Save Flashcards</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                Please enter a name for your flashcard collection.
-              </DialogContentText>
-              <TextField
-                autoFocus
-                margin="dense"
-                label="Collection Name"
-                type="text"
-                fullWidth
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                variant="outlined"
-              ></TextField>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose}>Cancel</Button>
-              <Button onClick={handleSave}>Save</Button>
-            </DialogActions>
-          </Dialog>
-        </Container>
-      </Box>
-    </Container>
+            {flashcards.length > 0 && (
+              <Box sx={{ mt: 4 }}>
+                <Typography variant="h5">Flashcards Preview</Typography>
+                <Grid container spacing={3}>
+  {flashcards.map((flashcard, index) => (
+    <Grid item xs={12} sm={6} md={4} key={index}>
+      <Card
+        sx={{
+          backgroundColor: "#144552", // Set flashcard background color
+          padding: 0, // Remove padding from the Card
+          transition: "transform 0.3s ease, box-shadow 0.3s ease",
+          "&:hover": {
+            transform: "scale(1.05)", // Scale the card on hover
+            boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.3)", // Add shadow on hover
+          },
+        }}
+      >
+        <CardActionArea onClick={() => handleCardClick(index)}>
+          <CardContent
+            sx={{
+              textAlign: "center",
+              padding: 0, // Remove padding from the CardContent
+            }}
+          >
+            <Box
+              sx={{
+                perspective: "1000px",
+                "& > div": {
+                  transition: "transform 0.6s",
+                  transformStyle: "preserve-3d",
+                  position: "relative",
+                  width: "100%",
+                  height: "200px",
+                  boxShadow: "0 0 4px 3px rgba(0, 0, 0, 0.2)",
+                  transform: flipped[index]
+                    ? "rotateY(180deg)"
+                    : "rotateY(0deg)",
+                },
+                "& > div > div": {
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  backfaceVisibility: "hidden",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  boxSizing: "border-box",
+                  overflow: "hidden", // Ensure text doesn't overflow
+                  backgroundColor: "#144552", // Set flashcard sides background color
+                  padding: 0, // Remove padding from the inner div
+                },
+                "& > div > div:nth-of-type(2)": {
+                  transform: "rotateY(180deg)",
+                },
+              }}
+            >
+              <div>
+                <div>
+                  <Typography
+                    variant="h5"
+                    component="div"
+                    sx={{
+                      whiteSpace: "normal",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      wordWrap: "break-word",
+                      fontSize:
+                        flashcard.front.length > 50
+                          ? "1rem"
+                          : "1.5rem", // Adjust font size based on text length
+                      padding: 0, // Remove padding from Typography
+                      color: "#ffffff", // Set text color for better contrast
+                    }}
+                  >
+                    {flashcard.front}
+                  </Typography>
+                </div>
+                <div>
+                  <Typography
+                    variant="h5"
+                    component="div"
+                    sx={{
+                      whiteSpace: "normal",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      wordWrap: "break-word",
+                      fontSize:
+                        flashcard.back.length > 50
+                          ? "1rem"
+                          : "1.5rem", // Adjust font size based on text length
+                      padding: 0, // Remove padding from Typography
+                      color: "#ffffff", // Set text color for better contrast
+                    }}
+                  >
+                    {flashcard.back}
+                  </Typography>
+                </div>
+              </div>
+            </Box>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </Grid>
+  ))}
+</Grid>
+
+
+
+                <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+                  <Button
+                    variant="contained"
+                    onClick={handleOpen}
+                    color="secondary"
+                    sx={{ backgroundColor: "#144552" }}
+                  >
+                    Save
+                  </Button>
+                </Box>
+              </Box>
+            )}
+
+<Dialog open={open} onClose={handleClose}
+  PaperProps={{
+    sx: {
+      backgroundImage: "linear-gradient(-60deg, #ff5858 0%, #f09819 100%)",
+    },
+  }}
+>
+  <DialogTitle>Save Flashcards</DialogTitle>
+  <DialogContent>
+    <DialogContentText>
+      Please enter a name for your flashcard collection.
+    </DialogContentText>
+    <TextField
+      autoFocus
+      margin="dense"
+      label="Collection Name"
+      type="text"
+      fullWidth
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      variant="outlined"
+    />
+  </DialogContent>
+  <DialogActions>
+    <Button
+      onClick={handleClose}
+      sx={{
+        backgroundColor: "#144552",
+        color: "#ffffff", // Optional: change text color for better contrast
+        "&:hover": {
+          backgroundColor: "#0d3b4f", // Optional: darken on hover
+        },
+      }}
+    >
+      Cancel
+    </Button>
+    <Button
+      onClick={handleSave}
+      sx={{
+        backgroundColor: "#144552",
+        color: "#ffffff", // Optional: change text color for better contrast
+        "&:hover": {
+          backgroundColor: "#0d3b4f", // Optional: darken on hover
+        },
+      }}
+    >
+      Save
+    </Button>
+  </DialogActions>
+</Dialog>
+
+          </Container>
+        </Box>
+      </Container>
+    </>
   );
 }
