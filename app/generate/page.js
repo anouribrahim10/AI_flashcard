@@ -26,6 +26,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { db } from "@/firebase.js"; // Named import
+import LinearIndeterminate from "./LinearIndeterminate";
 
 import {
   doc,
@@ -44,9 +45,11 @@ export default function Generate() {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false); 
   const router = useRouter();
 
   const handleSubmit = async () => {
+    setLoading(true); // Start loading
     fetch("/api/generate", {
       method: "POST",
       headers: {
@@ -55,8 +58,16 @@ export default function Generate() {
       body: JSON.stringify({ text }),
     })
       .then((res) => res.json())
-      .then((data) => setFlashcards(data));
+      .then((data) => {
+        setFlashcards(data);
+        setLoading(false); // Stop loading
+      })
+      .catch((error) => {
+        console.error("Error generating flashcards:", error);
+        setLoading(false); // Stop loading on error
+      });
   };
+  
 
   const handleCardClick = (index) => {
     setFlipped((prev) => ({
@@ -331,6 +342,11 @@ export default function Generate() {
                 >
                   Generate
                 </Button>
+                {loading && ( // Show the loading indicator when loading is true
+        <Box sx={{ mt: 2 }}>
+          <LinearIndeterminate />
+        </Box>
+      )}
               </Paper>
             </Box>
 
